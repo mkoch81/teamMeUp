@@ -1,0 +1,11 @@
+<app-header class="header" [memberCreationActive]="memberCreating" (newCreationEvent)="toggleNewMemberCreation()"></app-header>
+
+<div class="container">
+  <app-settings *ngIf="settingsActive" class="sidebar"></app-settings>
+  <router-outlet></router-outlet>
+
+<app-new-member *ngIf="memberCreating"></app-new-member>
+  <app-team-list></app-team-list>
+</div>
+
+<app-footer class="footer"></app-footer>

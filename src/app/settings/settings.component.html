@@ -1,0 +1,42 @@
+<h4>Settings</h4>
+
+<div class="groupSettings">
+  <button (click)="settingsService.toggleGroups()" class="toggle">
+    <img *ngIf="!settingsService.settings.groups" src="assets/img/settings/groups.png">
+    <img *ngIf="settingsService.settings.groups" src="assets/img/settings/groupsActive.png">
+  </button>
+  <label>{{ settingsService.settings.numberOfTeams }}</label>
+  <div class="stepper">
+    <button type="button" (click)="settingsService.updateGroupCount(settingsService.settings.numberOfTeams - 1)">-</button>
+    <button type="button" (click)="settingsService.updateGroupCount(settingsService.settings.numberOfTeams + 1)">+</button>
+  </div>
+</div>
+
+<div class="groupSettings">
+  <button (click)="settingsService.toggleMembers()" class="toggle">
+    <img *ngIf="!settingsService.settings.members" src="assets/img/settings/member.png">
+    <img *ngIf="settingsService.settings.members" src="assets/img/settings/memberActive.png">
+  </button>
+    <label>{{ settingsService.settings.numberOfMembers }}</label>
+    <div class="stepper">
+      <button type="button" (click)="settingsService.updateMemberCount(settingsService.settings.numberOfMembers - 1)">-</button>
+      <button type="button" (click)="settingsService.updateMemberCount(settingsService.settings.numberOfMembers + 1)">+</button>
+    </div>
+</div>
+
+<div class="justButtons">
+  <button (click)="settingsService.toggleOneAgainstAll()" class="toggle">
+    <img *ngIf="!settingsService.settings.oneAgainstAll" src="assets/img/settings/oneAgainstAll.png">
+    <img *ngIf="settingsService.settings.oneAgainstAll" src="assets/img/settings/oneAgainstAllActive.png">
+  </button>
+  
+  <button (click)="settingsService.toggleNooneIsLeftBehind()" class="toggle">
+    <img *ngIf="!settingsService.settings.noOneIsLeftBehind" src="assets/img/settings/nooneIsLeftBehind.png">
+    <img *ngIf="settingsService.settings.noOneIsLeftBehind" src="assets/img/settings/nooneIsLeftBehindActive.png">
+  </button>
+  
+  <button (click)="settingsService.toggleColored()" class="toggle">
+    <img *ngIf="!settingsService.settings.colored" src="assets/img/settings/colored.png">
+    <img *ngIf="settingsService.settings.colored" src="assets/img/settings/coloredActive.png">
+  </button>
+</div>

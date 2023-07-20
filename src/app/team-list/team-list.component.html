@@ -1,0 +1,9 @@
+<div class="team-list" *ngFor="let item of teamsService.teams">
+  {{ item.name }}
+  <div *ngFor="let element of item.members" [ngStyle]="getElementColor(element)">
+    <app-team-list-element class="team-element-row" [member]="element"></app-team-list-element> 
+  </div>
+</div>
+<div *ngFor="let element of teamsService.members">
+  <app-team-list-element *ngIf="element.team === undefined"></app-team-list-element> 
+</div>

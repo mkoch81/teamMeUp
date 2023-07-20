@@ -1,0 +1,70 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  font-family: 'Roboto', Arial, sans-serif;
+  color: #616161;
+}
+
+body {
+  margin: 0px;
+}
+
+router-outlet + *  {
+  padding: 0 16px;
+}
+
+$team-color1: #1976d2;
+$team-color2: #008300;
+
+.container {
+  display:grid;
+  grid-row: 1fr;
+  margin-left: 180px;
+  padding-top: 110px;
+}
+
+.header {
+  width: 100%;
+  height: 68px;
+  background-color: $team-color1;
+  padding: 16px;
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  h3 {
+    width: 200px;
+  }
+  button {
+    height: 50px;
+    width: 100px;
+  }
+}
+
+.sidebar {
+  width: 150px;
+  background-color: rgba(0,0,0,0.3);
+  z-index: 1000;
+  position: fixed; /* stay in place */
+  top: 100px;
+  bottom: 100px;
+  left: 0;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 10px;
+  transition: 0.5s;
+}
+
+.footer {
+  width: 100%;
+  height: 68px;
+  background-color: #1976d2;
+  padding: 16px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
