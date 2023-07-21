@@ -13,6 +13,7 @@ import { TeamListElementComponent } from './team-list-element/team-list-element.
 import { NewMemberComponent } from './new-member/new-member.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { NewMemberContainerComponent } from './new-member-container/new-member-container.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     SettingsComponent,
     TeamListComponent,
     TeamListElementComponent,
+    NewMemberContainerComponent,
     NewMemberComponent
   ],
   imports: [

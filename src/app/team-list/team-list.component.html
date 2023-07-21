@@ -1,9 +1,13 @@
 <div class="team-list" *ngFor="let item of teamsService.teams">
-  {{ item.name }}
-  <div *ngFor="let element of item.members" [ngStyle]="getElementColor(element)">
-    <app-team-list-element class="team-element-row" [member]="element"></app-team-list-element> 
+  <h3 class="team-list-h3">{{ item.name }}</h3>
+  <div *ngFor="let element of item.members">
+    <app-team-list-element [member]="element"></app-team-list-element> 
   </div>
 </div>
+<div *ngIf="teamsService.notSpreadMembers">
+  <h3 class="not-selected-members-h3">Not selected members</h3>
 <div *ngFor="let element of teamsService.members">
-  <app-team-list-element *ngIf="element.team === undefined"></app-team-list-element> 
+  <div class="not-selected-members" *ngIf="element.team === undefined">  {{element.name}}
+  </div> 
+</div>
 </div>

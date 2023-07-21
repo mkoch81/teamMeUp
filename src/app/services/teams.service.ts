@@ -9,6 +9,7 @@ export class TeamsService implements OnInit {
 
   teamURL = 'http://localhost:3000/teams';
   memberURL = 'http://localhost:3000/members';
+  notSpreadMembers = false;
 
   colors = ['#a442f5', '#e642f5', '#f5426c', '#57f542', '#f5ec42', '#f57e42'];
   teams: Team[] = [];
@@ -59,7 +60,7 @@ export class TeamsService implements OnInit {
         alert('You do not have enough members to create at least 2 teams');
         return;
       }
-    } else {
+    } else if (!this.settingsService.settings.oneAgainstAll) {
       console.log('Nothing selected');
       alert('Please select at least the teams OR the member count to create teams.')
       return;
@@ -82,6 +83,7 @@ export class TeamsService implements OnInit {
       tmpMembers.splice(randomizer, 1);
 
       let team: Team = new Team(1, `Team against 1`, [...tmpMembers], this.colors[1]);
+      team.members.forEach(member => member.color = team.color);
       this.teams.push(team);
       this.postTeams();
       return;
@@ -96,26 +98,33 @@ export class TeamsService implements OnInit {
       for (let i = 0; i < teamSize; i++) {
         let randomizer = this.getRandomInt(0, tmpMembers.length)
 
-        // while (usedIDs.includes(randomizer)) {
-        //   randomizer = this.getRandomInt(0,this.members.length)
-        // }
-
         let foundMember = tmpMembers[randomizer];
         foundMember.color = team.color;
         team.members.push(foundMember);
         foundMember.team = team.id;
         tmpMembers.splice(randomizer, 1);
       }
-      console.log(`created team members ${team.members}`);
     }
-    // insert option for nooneIsLeftBehind
-    if (this.settingsService.settings.noOneIsLeftBehind && tmpMembers.length > 0) {
-      console.log(`NooneLeftBehind spreading remaining ${tmpMembers.length} members`);
-      let firstTeam = this.teams[0];
-      let remainingMember = tmpMembers[0];
-      remainingMember.color = firstTeam.color;
-      remainingMember.team = firstTeam.id;
-      firstTeam.members.push(remainingMember);
+    // nooneIsLeftBehind spreading all remaining members onto created teams
+    if (tmpMembers.length > 0) {
+      if (this.settingsService.settings.noOneIsLeftBehind) {
+        this.notSpreadMembers = false;
+        console.log(`NooneLeftBehind spreading remaining ${tmpMembers.length} members`);
+        for (let i = 0; i < tmpMembers.length; i++) {
+          let randomizer = this.getRandomInt(0, tmpMembers.length)
+          let foundMember = tmpMembers[randomizer];
+
+          let fillupTeam = this.teams[i];
+          foundMember.color = fillupTeam.color;
+          fillupTeam.members.push(foundMember);
+          foundMember.team = fillupTeam.id;
+          tmpMembers.splice(randomizer, 1);
+        }
+      } else {
+        this.notSpreadMembers = true;
+        // could be we have remaining members without teams so remove references
+        tmpMembers.forEach(element => element.team = undefined);
+      }
     }
     this.postTeams();
   }
@@ -148,6 +157,7 @@ export class TeamsService implements OnInit {
     ids.sort((a, b) => a - b);
     member.id = ids[ids.length - 1] + 1;
     this.postMember(member);
+    this.members.push(member);
   }
 
   postMember(member: Member) {
@@ -163,28 +173,9 @@ export class TeamsService implements OnInit {
 }
 
 export class Member {
-  id: number;
-  name: string;
-  active: boolean;
-  color: string;
-  team: number | undefined;
-  constructor(id: number, name: string, active: boolean, color: string) {
-    this.id = id;
-    this.name = name;
-    this.active = active;
-    this.color = color;
-  }
+  constructor(public id: number, public name: string, public active: boolean, public color: string, public team: number | undefined) { }
 }
 
 export class Team {
-  id: number;
-  name: string;
-  members: Member[];
-  color: string;
-  constructor(id: number, name: string, members: Member[], color: string) {
-    this.id = id;
-    this.name = name;
-    this.members = members;
-    this.color = color;
-  }
+  constructor(public id: number, public name: string, public members: Member[], public color: string) { }
 }

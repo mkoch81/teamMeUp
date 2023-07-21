@@ -1,5 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +17,14 @@ export class SettingsService implements OnInit {
     colored: true
   };
 
+  settings2 = new BehaviorSubject<Settings>(this.settings);
+  
   constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
     this.loadSettings();
+
+    // localStorage.setItem
   }
 
   loadSettings() {
@@ -52,10 +57,18 @@ export class SettingsService implements OnInit {
     }).subscribe();
   }
 
-
+  patch(settings:Partial<Settings>) {
+    this.settings2.next({ ...this.settings2.getValue(), ...settings});
+  }
   
   toggleGroups() {
+
     this.settings.groups = !this.settings.groups;
+    // reset member selection if set since both can not be active at the same time
+    if (this.settings.groups) this.settings.members = false;
+    // reset oneAgainstAll since can't both be active
+    this.settings.oneAgainstAll = false;
+    
     this.storeSettingsOnline();
   }
 
@@ -68,6 +81,9 @@ export class SettingsService implements OnInit {
 
   toggleMembers() {
     this.settings.members = !this.settings.members;
+    // reset group selection if set since both can not be active at the same time
+    if (this.settings.members) this.settings.groups = false;
+    this.settings.oneAgainstAll = false;
     this.storeSettingsOnline();
   }
 
@@ -87,11 +103,14 @@ export class SettingsService implements OnInit {
   toggleOneAgainstAll() {
     this.settings.oneAgainstAll = !this.settings.oneAgainstAll;
     this.settings.noOneIsLeftBehind = false;
+    this.settings.groups = false;
+    this.settings.members = false;
     this.storeSettingsOnline();
   }
 
   toggleColored() {
-    this.settings.colored = !this.settings.colored;
+    const {colored} = this.settings2.getValue();
+    this.patch({colored:  colored});
     this.storeSettingsOnline();
   }
 }

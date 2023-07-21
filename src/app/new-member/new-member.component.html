@@ -1,4 +1,5 @@
-<h3>Define new product</h3>
+<div class="container">
+  <h3>Enter new member name:</h3>
 
 <form [formGroup]="newMemberForm" (ngSubmit)="onSubmit()" style="margin-top: 16px;">
   <label for="name">Name: </label>
@@ -13,3 +14,5 @@
 <p>Form Value: {{ newMemberForm.value | json }}</p>
 
 <p>Form Status: {{ newMemberForm.status }}</p>
+
+</div>

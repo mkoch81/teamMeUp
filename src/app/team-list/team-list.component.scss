@@ -1,8 +1,21 @@
+@use '../../variables.scss';
+
 .team-list {
   width: 100%;
-  display: flex;
-  flex-direction: column;
+  text-align: center;
 }
-.team-element-row {
+.team-list-h3 {
+  background-color: variables.$team-color1;
+  color: white;
+}
+
+.not-selected-members-h3 {
+  text-align: center;
+  background-color: #b5f5f3;
+}
+
+.not-selected-members {
   width: 100%;
+  background-color: #cbf7f6;
+  text-align: center;
 }

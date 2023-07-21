@@ -1,30 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { Member, TeamsService } from '../teams.service';
+
+
 @Component({
   selector: 'app-new-member',
   templateUrl: './new-member.component.html',
   styleUrls: ['./new-member.component.scss']
 })
 export class NewMemberComponent {
-
+  @Output() newCreationEvent = new EventEmitter<string>();
+  @Input() name = '';
+  
   newMemberForm = this.fb.group({
-    name: ['', Validators.required],
-    meta: this.fb.group({
-      description: [''],
-      price: [1, Validators.min(0)]
-    })
+    name: ['', Validators.required]
   });
 
-  constructor(private fb: FormBuilder, private teamsService:TeamsService){}
+  constructor(private fb: FormBuilder){}
 
   onSubmit() {
     // TODO: Use EventEmitter with form value
-    console.warn(this.newMemberForm.value);
     const fv = this.newMemberForm.value;
-    const newMember:Member = new Member(1,fv.name!,true,'');
-    this.teamsService.createNewMember(newMember);
-    
+    this.newCreationEvent.emit(fv.name!);
   }
+
 }

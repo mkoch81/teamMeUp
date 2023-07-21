@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Member, Team, TeamsService } from '../teams.service';
-import { SettingsService } from '../settings.service';
+import { Member, Team, TeamsService } from '../services/teams.service';
+import { SettingsService } from '../services/settings.service';
 
 @Component({
   selector: 'app-team-list',
@@ -16,16 +16,4 @@ export class TeamListComponent implements OnInit {
     this.teamsService.loadMembers();
   }
 
-  getElementColor(member:Member) {
-    // color not active
-    if (!this.settingsService.settings.colored) {
-      return { 'background-color': '#fc1703' };
-    }
-    // member exists
-    if (member !== undefined) {
-      return { 'background-color': member.color};
-    }
-    // fallback
-    return { 'background-color': 'transparent'};
-  }
 }

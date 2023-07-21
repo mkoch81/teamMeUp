@@ -23,7 +23,8 @@
       <button type="button" (click)="settingsService.updateMemberCount(settingsService.settings.numberOfMembers + 1)">+</button>
     </div>
 </div>
-
+<!--  *ngIf="settings | async as s else tpl" -->
+<!-- <ng-template #tpl><button></button></ng-template> -->
 <div class="justButtons">
   <button (click)="settingsService.toggleOneAgainstAll()" class="toggle">
     <img *ngIf="!settingsService.settings.oneAgainstAll" src="assets/img/settings/oneAgainstAll.png">
