@@ -42,7 +42,6 @@ export class SettingsService implements OnInit {
     this.settings.members = result.members;
     this.settings.numberOfMembers = result.numberOfMembers;
     this.settings.colored = result.colored;
-    console.log('nlb = ' + this.settings.noOneIsLeftBehind);
   }
 
   storeSettingsOnline() {
@@ -109,8 +108,9 @@ export class SettingsService implements OnInit {
   }
 
   toggleColored() {
-    const {colored} = this.settings2.getValue();
-    this.patch({colored:  colored});
+    // const {colored} = this.settings2.getValue();
+    // this.patch({colored:  !colored});
+    this.settings.colored = !this.settings.colored;
     this.storeSettingsOnline();
   }
 }

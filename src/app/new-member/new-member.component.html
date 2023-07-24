@@ -1,18 +1,20 @@
-<div class="container">
-  <h3>Enter new member name:</h3>
-
-<form [formGroup]="newMemberForm" (ngSubmit)="onSubmit()" style="margin-top: 16px;">
-  <label for="name">Name: </label>
-  <input id="name" type="text" formControlName="name" required>
-
-  <p>Complete the form to enable button.</p>
-  <button type="submit" [disabled]="!newMemberForm.valid">Submit</button>
-</form>
-
-<hr>
-
-<p>Form Value: {{ newMemberForm.value | json }}</p>
-
-<p>Form Status: {{ newMemberForm.status }}</p>
-
-</div>
+<ng-container my-dialog-content (storeData)="onSubmit()">
+  <div class="dialog-box">
+    <h3>Enter new member name:</h3>
+  
+  <form [formGroup]="newMemberForm" (ngSubmit)="onSubmit()" style="margin-top: 16px;">
+    <label for="name">Name: </label>
+    <input id="name" type="text" formControlName="name" required>
+  
+    <p>Complete the form to enable button.</p>
+    <button type="submit" [disabled]="!newMemberForm.valid">Submit</button>
+  </form>
+  
+  <hr>
+  
+  <p>Form Value: {{ newMemberForm.value | json }}</p>
+  
+  <p>Form Status: {{ newMemberForm.status }}</p>
+  
+  </div>
+</ng-container>

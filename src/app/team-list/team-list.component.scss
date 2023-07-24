@@ -3,6 +3,7 @@
 .team-list {
   width: 100%;
   text-align: center;
+  margin-bottom: 20px;
 }
 .team-list-h3 {
   background-color: variables.$team-color1;
@@ -18,4 +19,8 @@
   width: 100%;
   background-color: #cbf7f6;
   text-align: center;
+}
+
+.not-selected-members-list {
+  margin-bottom: 20px;
 }

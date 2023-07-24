@@ -11,7 +11,7 @@ export class TeamsService implements OnInit {
   memberURL = 'http://localhost:3000/members';
   notSpreadMembers = false;
 
-  colors = ['#a442f5', '#e642f5', '#f5426c', '#57f542', '#f5ec42', '#f57e42'];
+  colors = ['#a8e6cf', '#dcedc1', '#ffd3b6', '#ffaaa5', '#ff8b94'];
   teams: Team[] = [];
   members: Member[] = [];
 
@@ -29,12 +29,9 @@ export class TeamsService implements OnInit {
   loadMembers() {
     this.httpClient.get(this.memberURL)
       .subscribe(result => {
-        this.storeResult(result as Member[]);
+        this.members = result as Member[];
+        console.log('members loaded = ' + this.members.length);
       });
-  }
-
-  storeResult(result: Member[]) {
-    this.members = result;
   }
 
   createTeams() {
@@ -44,24 +41,28 @@ export class TeamsService implements OnInit {
     let teamCount = 0;
     let teamSize = 0;
     if (this.settingsService.settings.groups) {
-      console.log('Groups selected');
+      
       teamCount = this.settingsService.settings.numberOfTeams;
       teamSize = Math.floor(this.members.length / teamCount);
+      
       if (teamSize < 1) {
         alert('You do not have enough members to create this number of teams');
         return;
       }
     } else if (this.settingsService.settings.members) {
-      console.log('Members selected');
+      
       teamSize = this.settingsService.settings.numberOfMembers;
-      teamCount = this.members.length / teamSize;
+      teamCount = Math.floor(this.members.length / teamSize);
+      console.log('teamSize = ' + teamSize);
+      console.log('teamCount = ' + teamCount);
+      console.log('this.members.length = ' + this.members.length);
       // if not enough members show alert
       if (teamCount <= 1) {
         alert('You do not have enough members to create at least 2 teams');
         return;
       }
     } else if (!this.settingsService.settings.oneAgainstAll) {
-      console.log('Nothing selected');
+      
       alert('Please select at least the teams OR the member count to create teams.')
       return;
     }
@@ -91,8 +92,8 @@ export class TeamsService implements OnInit {
 
     // normal creation of teams
     for (let i = 0; i < teamCount; i++) {
-
-      let team: Team = new Team(i, `Team ${i}`, [], this.colors[i]);
+      let colorId = i % this.colors.length;
+      let team: Team = new Team(i, `Team ${i}`, [], this.colors[colorId]);
       this.teams.push(team);
 
       for (let i = 0; i < teamSize; i++) {
@@ -109,7 +110,7 @@ export class TeamsService implements OnInit {
     if (tmpMembers.length > 0) {
       if (this.settingsService.settings.noOneIsLeftBehind) {
         this.notSpreadMembers = false;
-        console.log(`NooneLeftBehind spreading remaining ${tmpMembers.length} members`);
+
         for (let i = 0; i < tmpMembers.length; i++) {
           let randomizer = this.getRandomInt(0, tmpMembers.length)
           let foundMember = tmpMembers[randomizer];

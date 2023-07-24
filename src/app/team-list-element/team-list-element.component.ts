@@ -22,7 +22,7 @@ export class TeamListElementComponent {
   getElementColor(member:Member) {
     // color not active
     if (!this.settingsService.settings.colored) {
-      return { 'background-color': '#fc1703' };
+      return { 'background-color': '#dddddd' };
     }
     // member exists
     if (member !== undefined) {

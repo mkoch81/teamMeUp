@@ -14,6 +14,10 @@ import { NewMemberComponent } from './new-member/new-member.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { NewMemberContainerComponent } from './new-member-container/new-member-container.component';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { PortalModule } from '@angular/cdk/portal';
+import { DialogComponent } from './dialog/dialog.component';
+import { MembersComponent } from './members/members.component';
 
 @NgModule({
   declarations: [
@@ -24,14 +28,18 @@ import { NewMemberContainerComponent } from './new-member-container/new-member-c
     TeamListComponent,
     TeamListElementComponent,
     NewMemberContainerComponent,
-    NewMemberComponent
+    NewMemberComponent,
+    DialogComponent,
+    MembersComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     MatListModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    OverlayModule,
+    PortalModule
   ],
   providers: [],
   bootstrap: [AppComponent]

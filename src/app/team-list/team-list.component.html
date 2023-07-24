@@ -4,10 +4,10 @@
     <app-team-list-element [member]="element"></app-team-list-element> 
   </div>
 </div>
-<div *ngIf="teamsService.notSpreadMembers">
+<div class="not-selected-members-list" *ngIf="teamsService.notSpreadMembers">
   <h3 class="not-selected-members-h3">Not selected members</h3>
-<div *ngFor="let element of teamsService.members">
-  <div class="not-selected-members" *ngIf="element.team === undefined">  {{element.name}}
-  </div> 
-</div>
+  <div *ngFor="let element of teamsService.members">
+    <div class="not-selected-members" *ngIf="element.team === undefined">  {{element.name}}
+    </div> 
+  </div>
 </div>

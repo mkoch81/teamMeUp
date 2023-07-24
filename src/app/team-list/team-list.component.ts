@@ -12,8 +12,10 @@ export class TeamListComponent implements OnInit {
   constructor(public teamsService:TeamsService, public settingsService:SettingsService){}
 
   ngOnInit(): void {
-    // this.teamsService.loadTeams();
+    // 
     this.teamsService.loadMembers();
+    console.log('member length'+this.teamsService.members.length);
+    this.teamsService.loadTeams();
   }
 
 }

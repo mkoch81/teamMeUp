@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NewMemberComponent } from './new-member/new-member.component';
+import { DialogComponent } from './dialog/dialog.component';
+import { MembersComponent } from './members/members.component';
+import { TeamListComponent } from './team-list/team-list.component';
 
 const routes: Routes = [
-  {path: 'members', component: NewMemberComponent}
+  {path: '', component: TeamListComponent},
+  {path: 'teams', component: TeamListComponent},
+  {path: 'dialog', component: DialogComponent},
+  {path: 'members', component: MembersComponent}
 ];
 
 @NgModule({
