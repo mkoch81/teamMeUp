@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SettingsService } from './settings.service';
-import { Observable } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,6 @@ export class TeamsService implements OnInit {
 
   teamURL = 'http://localhost:3000/teams';
   memberURL = 'http://localhost:3000/members';
-  notSpreadMembers = false;
 
   colors = ['#a8e6cf', '#dcedc1', '#ffd3b6', '#ffaaa5', '#ff8b94'];
   teams: Team[] = [];
@@ -19,64 +18,75 @@ export class TeamsService implements OnInit {
   constructor(private httpClient: HttpClient, private settingsService: SettingsService) { }
 
   ngOnInit(): void {
-    this.clearTeamsOnline();
+    this.loadTeams();
+    this.loadMembers();
   }
 
   loadTeams() {
     this.httpClient.get(this.teamURL)
-      .subscribe(result => this.teams = result as Team[]);
+      .subscribe({
+        next: result => this.teams = result as Team[],
+        error: err => console.log('Error loading teams: ' + err)
+      });
   }
 
   loadMembers() {
     this.httpClient.get(this.memberURL)
-      .subscribe(result => {
-        this.members = result as Member[];
+      .subscribe({
+        next: result => this.members = result as Member[],
+        error: err => console.log('Error loading teams: ' + err)
       });
   }
 
-  createTeams() {
-    this.clearTeamsOnline();
-    // maybe also clear all teams from the members to avoid issues
-    
-    this.notSpreadMembers = false;
-    
+  async createTeams() {
+    this.clearTeamsOnline().subscribe({
+      error: err => console.log('Error clearing teams ' + err),
+      complete: () => {
+        this.creatTeams();
+      } 
+    });    
+  }
+
+  creatTeams() {
+    let sett = this.settingsService.settings;
     this.teams = [];
-    // could be we have remaining members without teams so remove references
+    // could be we will have remaining members without teams so remove references to old teams
     this.members.forEach(element => element.team = -1);
+    // remove all inactive members for new team creation
     let tmpMembers = Array.from(
       this.members.filter(member => member.active)
     );
 
     let teamCount = 0;
     let teamSize = 0;
-    if (this.settingsService.settings.groups) {
+    if (sett.groups) {
 
-      teamCount = this.settingsService.settings.numberOfTeams;
+      teamCount = sett.numberOfTeams;
       teamSize = Math.floor(tmpMembers.length / teamCount);
 
       if (teamSize < 1) {
         alert('You do not have enough (active) members to create this number of teams');
         return;
       }
-    } else if (this.settingsService.settings.members) {
+    } else if (sett.members) {
 
-      teamSize = this.settingsService.settings.numberOfMembers;
+      teamSize = sett.numberOfMembers;
       teamCount = Math.floor(tmpMembers.length / teamSize);
       // if not enough members show alert
       if (teamCount <= 1) {
         alert('You do not have enough (active) members to create at least 2 teams');
         return;
       }
-    } else if (!this.settingsService.settings.oneAgainstAll) {
+    } else if (!sett.oneAgainstAll) {
 
       alert('Please select at least the teams, the member count  OR the "One Against All" option to create teams.')
       return;
     }
 
-    if (this.settingsService.settings.oneAgainstAll) {
+    if (sett.oneAgainstAll) {
       let randomizer = this.getRandomInt(0, tmpMembers.length)
 
-      let soloTeam: Team = new Team(0, `Solo Team`, [], this.colors[0]);
+      let soloTeam: Team = new Team(1, `Solo Team`, [], this.colors[0]);
       this.teams.push(soloTeam);
 
       let foundMember = tmpMembers[randomizer];
@@ -85,13 +95,13 @@ export class TeamsService implements OnInit {
       foundMember.team = soloTeam.id;
       tmpMembers.splice(randomizer, 1);
 
-      let team: Team = new Team(1, `Team against 1`, [...tmpMembers], this.colors[1]);
+      let team: Team = new Team(2, `Team against 1`, [...tmpMembers], this.colors[1]);
       team.members.forEach(member => {
         member.color = team.color;
         member.team = team.id;
       });
       this.teams.push(team);
-      this.postTeams();
+      this.createOrUpdateTeams();
       this.updateMembers();
       return;
     }
@@ -99,7 +109,7 @@ export class TeamsService implements OnInit {
     // normal creation of teams
     for (let i = 0; i < teamCount; i++) {
       let colorId = i % this.colors.length;
-      let team: Team = new Team(i, `Team ${i}`, [], this.colors[colorId]);
+      let team: Team = new Team(i+1, `Team ${i+1}`, [], this.colors[colorId]);
       this.teams.push(team);
 
       for (let i = 0; i < teamSize; i++) {
@@ -114,8 +124,7 @@ export class TeamsService implements OnInit {
     }
     // nooneIsLeftBehind spreading all remaining members onto created teams
     if (tmpMembers.length > 0) {
-      if (this.settingsService.settings.noOneIsLeftBehind) {
-        this.notSpreadMembers = false;
+      if (sett.noOneIsLeftBehind) {
 
         for (let i = 0; i < tmpMembers.length; i++) {
           let randomizer = this.getRandomInt(0, tmpMembers.length)
@@ -129,29 +138,37 @@ export class TeamsService implements OnInit {
         }
       }
     }
-    this.postTeams();
+    this.createOrUpdateTeams();
     this.updateMembers();
   }
 
-  postTeams() {
+  createOrUpdateTeams() {
     this.teams.forEach(element => {
-      this.httpClient.post(this.teamURL, element).subscribe();
+      this.httpClient.post(this.teamURL, element).subscribe(
+        {
+          error: (e) => {
+            console.log('Error posting team ' + element.id)
+            this.httpClient.put(this.teamURL + '/' + element.id, element).subscribe({
+              error: err => console.log('Error updating Team ' + element.id + 'with error ' + err),
+              complete: () => console.log('Success updating team ' + element.id)
+            })
+        },
+          complete: () => console.info('Success createOrUpdateTeams')
+        }
+      );
     });
   }
 
-  clearTeamsOnline() {
-    this.httpClient.get(this.teamURL).subscribe(e => {
-      (e as Team[]).forEach(element => {
-        this.httpClient.delete(this.teamURL + '/' + element.id).subscribe(e => console.log('PENG'));
-        console.log('PING');
-      });
-      console.log('PONG');
-    })
+  clearTeamsOnline():Observable<any> {
+    let obsArray:Observable<any>[] = []
+    this.teams.forEach(team => {
+      obsArray.push(this.httpClient.delete(this.teamURL + '/' + team.id));
+    });
+    return combineLatest(obsArray);
   }
 
-  updateTeam(team:Team) {
+  updateTeam(team: Team) {
     this.httpClient.put(this.teamURL + '/' + team.id, team).subscribe();
-    // catch error for createOrUpdate
   }
 
   createNewMember(member: Member) {
