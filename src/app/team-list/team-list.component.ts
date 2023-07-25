@@ -14,8 +14,14 @@ export class TeamListComponent implements OnInit {
   ngOnInit(): void {
     // 
     this.teamsService.loadMembers();
-    console.log('member length'+this.teamsService.members.length);
     this.teamsService.loadTeams();
   }
 
+  checkInactiveMembers(): boolean {
+    return this.teamsService.members.find(e => !e.active) != undefined;
+  }
+
+  checkNotSelectedMembers(): boolean {
+    return this.teamsService.members.find(e => e.team === -1 && e.active) != undefined;
+  }
 }

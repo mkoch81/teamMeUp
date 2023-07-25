@@ -1,7 +1,5 @@
 <app-new-member-container (closeDialog)="closeDialog()">
-  <ng-container my-dialog-content>
-    <div class="dialog-content">
+  <ng-container class="dialog-content" gen-dialog-content>
       <app-new-member (newCreationEvent)="closeDialog()"></app-new-member>
-    </div>
   </ng-container>
 </app-new-member-container>

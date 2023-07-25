@@ -12,15 +12,26 @@
 
 .not-selected-members-h3 {
   text-align: center;
-  background-color: #b5f5f3;
+  background-color: variables.$not-selected-member-background-color;
 }
 
 .not-selected-members {
   width: 100%;
-  background-color: #cbf7f6;
+  background-color: variables.$not-selected-member-background-color;
   text-align: center;
 }
 
-.not-selected-members-list {
+.inactive-members-h3 {
+  text-align: center;
+  background-color: variables.$inactive-member-background-color;
+}
+
+.inactive-members {
+  width: 100%;
+  background-color: variables.$inactive-member-background-color;
+  text-align: center;
+}
+
+.not-selected-members-list, .inactive-members-list {
   margin-bottom: 20px;
 }

@@ -1,3 +1,12 @@
-<div class="member-list" *ngFor="let item of teamsService.members">
-    <label>{{ item.name }}</label> 
+<div class="member-list">
+    <div *ngFor="let item of teamsService.members">
+        <div class="active-member-card" [ngClass]="{'inactive-member-card': !item.active}">
+            {{ item.name }}
+            <div class="member-button-box">
+                <button type="button" (click)="toggleActive(item)">(de)activate</button>
+            <button class="delete-member-button" type="button" (click)="deleteMember(item)">delete</button>
+            </div>
+        </div>
+        
+    </div> 
 </div>

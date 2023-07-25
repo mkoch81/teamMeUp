@@ -20,12 +20,10 @@ export class NewMemberComponent {
   constructor(private fb: FormBuilder, private teamsService: TeamsService,){}
 
   onSubmit() {
-    console.log('ON SUBMIT');
-    // TODO: Use EventEmitter with form value
     const fv = this.newMemberForm.value;
     this.newCreationEvent.emit();
 
-    const newMember:Member = new Member(1,fv.name!,true,'',0);
+    const newMember:Member = new Member(1,fv.name!,true,'',-1);
     this.teamsService.createNewMember(newMember);
   }
 
