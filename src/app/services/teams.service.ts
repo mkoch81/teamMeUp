@@ -171,6 +171,15 @@ export class TeamsService implements OnInit {
     this.httpClient.put(this.teamURL + '/' + team.id, team).subscribe();
   }
 
+  updateTeamName(id: number, name: string) {
+    console.log(`update team with id = ${id} and name = ${name} `);
+    let team = this.teams.find(e => e.id === id)
+    if (team != undefined) {
+      team!.name = name;
+      this.updateTeam(team);
+    }
+  }
+
   createNewMember(member: Member) {
     let ids: number[] = [];
     this.httpClient.get(this.memberURL).subscribe(e => {

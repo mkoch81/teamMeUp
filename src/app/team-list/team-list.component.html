@@ -1,5 +1,7 @@
 <div class="team-list" *ngFor="let item of teamsService.teams">
-  <h3 class="team-list-h3">{{ item.name }}</h3>
+  <h3 class="team-list-h3">
+    {{ item.name }}
+    <button type="button" class="team-rename-button" (click)="renameTeam(item)">&#9998;</button></h3>
   <div *ngFor="let element of item.members">
     <app-team-list-element [member]="element"></app-team-list-element>
   </div>

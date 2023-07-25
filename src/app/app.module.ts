@@ -13,11 +13,11 @@ import { TeamListElementComponent } from './team-list-element/team-list-element.
 import { NewMemberComponent } from './new-member/new-member.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { NewMemberContainerComponent } from './new-member-container/new-member-container.component';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PortalModule } from '@angular/cdk/portal';
 import { DialogComponent } from './dialog/dialog.component';
 import { MembersComponent } from './members/members.component';
+import { TeamRenameComponent } from './team-rename/team-rename.component';
 
 @NgModule({
   declarations: [
@@ -27,10 +27,10 @@ import { MembersComponent } from './members/members.component';
     SettingsComponent,
     TeamListComponent,
     TeamListElementComponent,
-    NewMemberContainerComponent,
     NewMemberComponent,
     DialogComponent,
-    MembersComponent
+    MembersComponent,
+    TeamRenameComponent
   ],
   imports: [
     BrowserModule,

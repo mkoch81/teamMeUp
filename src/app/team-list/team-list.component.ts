@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Member, Team, TeamsService } from '../services/teams.service';
 import { SettingsService } from '../services/settings.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-team-list',
@@ -9,7 +10,7 @@ import { SettingsService } from '../services/settings.service';
 })
 export class TeamListComponent implements OnInit {
 
-  constructor(public teamsService:TeamsService, public settingsService:SettingsService){}
+  constructor(public teamsService:TeamsService, public settingsService:SettingsService, private router: Router){}
 
   ngOnInit(): void {
     this.teamsService.loadMembers();
@@ -22,5 +23,9 @@ export class TeamListComponent implements OnInit {
 
   checkNotSelectedMembers(): boolean {
     return this.teamsService.members.find(e => e.team === -1 && e.active) != undefined;
+  }
+
+  renameTeam(team: Team) {
+    this.router.navigateByUrl(`rename-team/${team.id}`);
   }
 }

@@ -1,5 +1,37 @@
 # TeamMeUp
 
+This project requires a running json-server at localhost:3000 with the following object structure:
+
+{
+  "teams": [
+    {
+      "id": 1,
+      "name": "Team 1",
+      "members": [
+      ],
+      "color": "#a8e6cf"
+    }
+  ],
+  "members": [
+    {
+      "id": 1,
+      "name": "Player 1",
+      "active": true,
+      "color": "#a8e6cf",
+      "team": 1
+    }
+  ],
+  "settings": {
+    "oneAgainstAll": false,
+    "groups": true,
+    "numberOfTeams": 5,
+    "members": false,
+    "numberOfMembers": 6,
+    "colored": true
+  }
+}
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
 
 ## Development server

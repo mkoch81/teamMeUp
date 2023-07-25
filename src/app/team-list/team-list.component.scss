@@ -8,6 +8,9 @@
 .team-list-h3 {
   background-color: variables.$team-color1;
   color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .not-selected-members-h3 {
