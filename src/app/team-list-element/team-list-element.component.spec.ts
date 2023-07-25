@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TeamListElementComponent } from './team-list-element.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('TeamListElementComponent', () => {
   let component: TeamListElementComponent;
@@ -8,6 +9,7 @@ describe('TeamListElementComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
       declarations: [TeamListElementComponent]
     });
     fixture = TestBed.createComponent(TeamListElementComponent);

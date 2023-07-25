@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { Team, TeamsService } from '../services/teams.service';
+import { TeamsService } from '../services/teams.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

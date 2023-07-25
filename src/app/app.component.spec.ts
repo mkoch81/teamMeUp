@@ -1,12 +1,24 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { SettingsComponent } from './settings/settings.component';
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule],
-    declarations: [AppComponent]
-  }));
+    imports: [
+      RouterTestingModule, 
+      HttpClientTestingModule
+    ],
+    declarations: [
+      AppComponent, 
+      HeaderComponent, 
+      FooterComponent, 
+      SettingsComponent
+    ]
+  }).compileComponents());
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
