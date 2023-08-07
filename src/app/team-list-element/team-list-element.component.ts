@@ -10,7 +10,7 @@ import { SettingsService } from '../services/settings.service';
 })
 export class TeamListElementComponent {
 
-  @Input() member:Member|undefined|null;
+  @Input() member:Member|undefined;
 
   constructor(private settingsService: SettingsService) {}
 

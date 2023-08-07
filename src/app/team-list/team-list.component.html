@@ -10,6 +10,7 @@
   <h3 class="not-selected-members-h3">Not selected members</h3>
   <div *ngFor="let element of teamsService.members">
     <div class="not-selected-members" *ngIf="element.team === -1 && element.active">
+      <img class="member-avatar" src={{element.image}}>
       {{element.name}}
     </div>
   </div>
@@ -17,7 +18,9 @@
 <div class="inactive-members-list" *ngIf="checkInactiveMembers()">
   <h3 class="inactive-members-h3">Inactive members</h3>
   <div *ngFor="let element of teamsService.members">
-    <div class="inactive-members" *ngIf="!element.active"> {{element.name}}
+    <div class="inactive-members" *ngIf="!element.active">
+      <img class="member-avatar" src={{element.image}}>
+      {{element.name}}
     </div>
   </div>
 </div>

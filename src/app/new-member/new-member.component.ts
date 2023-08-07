@@ -62,8 +62,13 @@ export class NewMemberComponent {
       this.fileName = file.name;
       const reader = new FileReader();
       reader.onloadend = () => {
+        let result = reader.result;
+        if (!result) {
+          console.warn('file could not be read');
+          return;
+        }
         // get string from buffer 
-        this.base64PlainData = reader.result.toString();
+        this.base64PlainData = result.toString();
         this.newMemberForm.setValue({name: this.newMemberForm.value.name || '', file: this.base64PlainData});
       };
       reader.readAsDataURL(file);

@@ -38,3 +38,11 @@
 .not-selected-members-list, .inactive-members-list {
   margin-bottom: 20px;
 }
+
+.member-avatar {
+  width: 20px;
+  height: 20px;
+  margin: auto;
+  object-fit: cover;
+  overflow: hidden;
+}
