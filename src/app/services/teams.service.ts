@@ -23,17 +23,17 @@ export class TeamsService implements OnInit {
   }
 
   loadTeams() {
-    this.httpClient.get(this.teamURL)
+    this.httpClient.get<Team[]>(this.teamURL)
       .subscribe({
-        next: result => this.teams = result as Team[],
+        next: result => this.teams = result,
         error: err => console.log('Error loading teams: ' + err)
       });
   }
 
   loadMembers() {
-    this.httpClient.get(this.memberURL)
+    this.httpClient.get<Member[]>(this.memberURL)
       .subscribe({
-        next: result => this.members = result as Member[],
+        next: result => this.members = result,
         error: err => console.log('Error loading teams: ' + err)
       });
   }
@@ -182,8 +182,8 @@ export class TeamsService implements OnInit {
 
   createNewMember(member: Member) {
     let ids: number[] = [];
-    this.httpClient.get(this.memberURL).subscribe(e => {
-      (e as Member[]).forEach(element => {
+    this.httpClient.get<Member[]>(this.memberURL).subscribe(e => {
+      e.forEach(element => {
         ids.push(element.id);
       });
     });
@@ -219,7 +219,7 @@ export class TeamsService implements OnInit {
 }
 
 export class Member {
-  constructor(public id: number, public name: string, public active: boolean, public color: string, public team: number) { }
+  constructor(public id: number, public name: string, public active: boolean, public color: string, public team: number, public image: string) { }
 }
 
 export class Team {

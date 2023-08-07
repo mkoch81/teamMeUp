@@ -2,4 +2,13 @@
 .team-element-row {
   width: 100%;
   color: rgba(0,0,0,0.6);
+  margin: auto;
+}
+
+.member-avatar {
+  width: 20px;
+  height: 20px;
+  margin: auto;
+  object-fit: contain;
+  overflow: hidden;
 }

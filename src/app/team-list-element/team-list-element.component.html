@@ -1,3 +1,4 @@
 <div class="team-element-row" (click)="toggleSelection()" [ngStyle]="getElementColor(member!)">
-  {{ member?.name }}
+  <img class="member-avatar" src={{member.image}}>
+  {{ member.name }}
 </div>

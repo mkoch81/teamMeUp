@@ -28,7 +28,6 @@ export class SettingsService implements OnInit {
   }
 
   loadSettings() {
-    console.log('Woop');
     this.http.get<Settings>('http://localhost:3000/settings').subscribe(result =>
       this.storeResult(result)
     );
