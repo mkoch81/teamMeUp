@@ -18,7 +18,8 @@ This project requires a running json-server at localhost:3000 with the following
       "name": "Player 1",
       "active": true,
       "color": "#a8e6cf",
-      "team": 1
+      "team": 1,
+      "image": ""
     }
   ],
   "settings": {
