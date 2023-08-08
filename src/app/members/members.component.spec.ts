@@ -8,13 +8,13 @@ import { HttpClient } from '@angular/common/http';
 
 class MockTeamsService extends TeamsService {
   override members: Member[] = [
-    new Member(1, 'Peter', true, '#a8e6cf', 1),
-    new Member(2, 'Gerda', true, '#dcedc1', 2),
-    new Member(3, 'Tim', false, '', -1)
+    new Member(1, 'Peter', true, '#a8e6cf', 1, ''),
+    new Member(2, 'Gerda', true, '#dcedc1', 2, ''),
+    new Member(3, 'Tim', false, '', -1, '')
   ];
   override teams: Team[] = [
-    new Team(1,'Team Helden', [new Member(1, 'Peter', true, '#a8e6cf', 1)],''),
-    new Team(2,'Team Satan', [new Member(2, 'Gerda', true, '#dcedc1', 1)],'')
+    new Team(1,'Team Helden', [new Member(1, 'Peter', true, '#a8e6cf', 1, '')],''),
+    new Team(2,'Team Satan', [new Member(2, 'Gerda', true, '#dcedc1', 1, '')],'')
   ];
 
   override loadMembers(): void {

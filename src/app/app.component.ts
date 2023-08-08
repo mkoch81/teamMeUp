@@ -7,13 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'team-me-up';
-  settingsActive = true;
-  memberCreating = false;
 
-  toggleSettings() {
-    this.settingsActive = !this.settingsActive;
-  }
-  toggleNewMemberCreation() {
-    this.memberCreating = !this.memberCreating;
-  }
+
 }

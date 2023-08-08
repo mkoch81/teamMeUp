@@ -18,6 +18,7 @@ import { PortalModule } from '@angular/cdk/portal';
 import { DialogComponent } from './dialog/dialog.component';
 import { MembersComponent } from './members/members.component';
 import { TeamRenameComponent } from './team-rename/team-rename.component';
+import { TutorialComponent } from './tutorial/tutorial.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { TeamRenameComponent } from './team-rename/team-rename.component';
     NewMemberComponent,
     DialogComponent,
     MembersComponent,
-    TeamRenameComponent
+    TeamRenameComponent,
+    TutorialComponent
   ],
   imports: [
     BrowserModule,
