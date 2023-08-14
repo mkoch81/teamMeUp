@@ -1,0 +1,49 @@
+
+
+// h3 {
+//   margin-left: 40px;
+//   color: rgb(213, 236, 213);
+// }
+
+mat-toolbar {
+  display: grid;
+  grid-template-areas: "sidebarToggle navItems profile";
+  grid-template-columns: auto 1fr auto;
+  height: var(--header-height);
+}
+
+.sidebar-toggle {
+  grid-area: sidebarToggle;
+  display: none;
+}
+
+app-profile-menu {
+  grid-area: profile;
+}
+
+.button-box {
+  grid-area: navItems;
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: center;
+  // position: fixed;
+  // right: 20px;
+  // top: 20px;
+
+  button {
+    color: rgb(147, 198, 147);
+    // background-color: rgb(147, 198, 147);
+    // border: 1px solid rgba(0,0,0,0.2);
+    // height: 30px;
+    margin-right: 20px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .sidebar-toggle {
+    display: block;
+  }
+}

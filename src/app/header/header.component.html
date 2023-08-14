@@ -1,7 +1,0 @@
-<h3>TeamMeUp</h3>
-<div class="button-box">
-  <button type="button" *ngIf="router.url == '/members'" (click)="openCreateMemberForm()">Add member</button>
-  <button type="button" *ngIf="router.url != '/members'" routerLink="/members">Members</button>
-  <button type="button" *ngIf="router.url === '/'" (click)="createTeams()">Create Teams</button>
-  <button type="button" *ngIf="router.url === '/members'" routerLink="../">Teams</button>
-</div>

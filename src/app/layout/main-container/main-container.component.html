@@ -1,0 +1,9 @@
+<app-header (toggleSidebar)="showSidebar = !showSidebar"></app-header>
+
+<app-settings [class.sidebar-show]="showSidebar" *ngIf="this.router.url.includes('app/teams')"></app-settings>
+
+<main>
+  <router-outlet #outlet="outlet"></router-outlet>
+</main>
+
+<!-- <app-backdrop [show]="showSidebar" (click)="showSidebar = !showSidebar"></app-backdrop> -->

@@ -1,0 +1,12 @@
+<mat-toolbar>
+  <button *ngIf="this.router.url.includes('app/teams')" class="sidebar-toggle" type="button" aria-label="Toggle sidebar" mat-icon-button (click)="onToggle()">
+    <mat-icon aria-label="Sidebar toggle icon">menu</mat-icon>
+  </button>
+  <div class="button-box">
+    <button mat-button color="primary" *ngIf="router.url === '/app/members'" routerLink="/app/teams">Teams</button>
+    <button mat-button color="primary" *ngIf="router.url === '/app/teams'" routerLink="/app/members">Members</button>
+    <button mat-raised-button color="primary" *ngIf="router.url === '/app/teams'" (click)="createTeams()">Create Teams</button>
+    <button mat-raised-button color="primary" *ngIf="router.url == '/app/members'" (click)="openCreateMemberForm()">Add member</button>
+  </div>
+  <!-- <app-profile-menu></app-profile-menu> -->
+</mat-toolbar>

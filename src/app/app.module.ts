@@ -3,36 +3,27 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { SettingsComponent } from './settings/settings.component';
 import { HttpClientModule } from '@angular/common/http';
-import { TeamListComponent } from './team-list/team-list.component';
 import {MatListModule} from '@angular/material/list';
-import { TeamListElementComponent } from './team-list-element/team-list-element.component';
-import { NewMemberComponent } from './new-member/new-member.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { OverlayModule } from '@angular/cdk/overlay';
-import { PortalModule } from '@angular/cdk/portal';
-import { DialogComponent } from './dialog/dialog.component';
-import { MembersComponent } from './members/members.component';
-import { TeamRenameComponent } from './team-rename/team-rename.component';
 import { TutorialComponent } from './tutorial/tutorial.component';
+import { LayoutModule } from './layout/layout.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PortalModule } from '@angular/cdk/portal';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { DialogComponent } from './dialog/dialog.component';
+import { TeamRenameComponent } from './team-rename/team-rename.component';
+import { NewMemberComponent } from './new-member/new-member.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    SettingsComponent,
-    TeamListComponent,
-    TeamListElementComponent,
-    NewMemberComponent,
+    TutorialComponent,
     DialogComponent,
-    MembersComponent,
     TeamRenameComponent,
-    TutorialComponent
+    NewMemberComponent
   ],
   imports: [
     BrowserModule,
@@ -40,8 +31,10 @@ import { TutorialComponent } from './tutorial/tutorial.component';
     HttpClientModule,
     MatListModule,
     ReactiveFormsModule,
-    OverlayModule,
-    PortalModule
+    LayoutModule,
+    BrowserAnimationsModule,
+    PortalModule,
+    OverlayModule
   ],
   providers: [],
   bootstrap: [AppComponent]

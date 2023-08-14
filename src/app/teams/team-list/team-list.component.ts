@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Team, TeamsService } from '../services/teams.service';
-import { SettingsService } from '../services/settings.service';
+import { Team, TeamsService } from '../../services/teams.service';
+import { SettingsService } from '../../services/settings.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -26,6 +26,6 @@ export class TeamListComponent implements OnInit {
   }
 
   renameTeam(team: Team) {
-    this.router.navigateByUrl(`rename-team/${team.id}`);
+    this.router.navigateByUrl(`app/rename-team/${team.id}`);
   }
 }

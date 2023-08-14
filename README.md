@@ -32,6 +32,8 @@ This project requires a running json-server at localhost:3000 with the following
   }
 }
 
+The Teams will be generated but you can prepare some users. the color and team property will be set on team generation so you can leave them empty. The image contains the base64 of an image you can upload during member creation. I recommend creating all data with the application to avoid inconsistencies.
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
 

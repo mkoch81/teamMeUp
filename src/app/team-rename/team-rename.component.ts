@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
-import { TeamsService } from '../services/teams.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TeamsService } from 'src/app/services/teams.service';
 
 @Component({
   selector: 'app-team-rename',

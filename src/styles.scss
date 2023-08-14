@@ -5,10 +5,15 @@
 * {
   font-family: 'Roboto', Arial, sans-serif;
   color: #616161;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+html,
 body {
-  margin: 0px;
+  height: 100%;
+  overflow: hidden;
 }
 
 router-outlet + *  {
@@ -30,6 +35,16 @@ router-outlet + *  {
   overflow: hidden;
 }
 
+@media (max-width: 620px) {
+  .content {
+    grid-template-columns: 100%;
+    grid-template-areas: 
+    "header"
+    "main"
+    "footer";
+  }
+}
+
 .sidebar {
   grid-area: sidebar;
   background-color: rgba(0,0,0,0.2);
@@ -42,6 +57,7 @@ router-outlet + *  {
 .container {
   grid-area: main;
   height: 100%;
+  width: 100%;
   overflow: auto;
 }
 
@@ -87,5 +103,36 @@ router-outlet + *  {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@media (min-width: 800px) {
+  :root {
+    /* ScrollbarFirefox */
+    scrollbar-color: var(--primary) grey;
+    scrollbar-width: 7px;
+  }
+
+  /* ScrollBar Style */
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+    height: 7px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: var(--primary);
+  }
+}
+
+.mat-mdc-menu-content {
+  background-color: white;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 5px;
+  box-shadow: -10px -10px 5px rgba(0,0,0,0.2);
+}
+
+.cdk-overlay-pane {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}

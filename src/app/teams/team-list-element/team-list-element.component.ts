@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Member } from '../services/teams.service';
 import { Input } from '@angular/core';
-import { SettingsService } from '../services/settings.service';
+import { SettingsService } from 'src/app/services/settings.service';
+import { Member } from 'src/app/services/teams.service';
 
 @Component({
   selector: 'app-team-list-element',

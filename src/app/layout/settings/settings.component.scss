@@ -1,0 +1,126 @@
+// ----
+aside {
+  --sidebar-padding: 10px;
+  --sidebar-toggle-height: 60px;
+
+  display: grid;
+  grid-template-areas:
+    "buttonToggle"
+    "sidebarItems";
+  grid-template-rows: auto 1fr auto;
+
+  background: var(--accent);
+  width: 200px; // defines width for mobile when expanded
+  max-height: calc(100vh - var(--header-height));
+  // -moz-transition: width 0.1s ease-in-out;
+  // -webkit-transition: width 0.1s ease-in-out;
+  // transition: width 0.1s ease-in-out;
+}
+
+.sidebar-toogle-container {
+  grid-area: buttonToggle;
+
+  height: var(--sidebar-toggle-height);
+  display: flex;
+  justify-content: flex-end;
+  color: white;
+  font-size: 1.2rem;
+  padding: var(--sidebar-padding);
+  box-sizing: border-box;
+}
+
+.sidebar-items {
+  grid-area: sidebarItems;
+  padding: var(--sidebar-padding);
+  color: white;
+  height: calc(100vh - var(--sidebar-toggle-height) - var(--header-height));
+  overflow-y: auto;
+}
+
+app-footer {
+  grid-area: footer;
+}
+
+
+
+// ---
+
+h4 {
+  padding-left: 16px;
+  padding-right: 16px;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  width: 40px;
+}
+
+.toggle {
+  background-color: transparent;
+  color: white;
+  border: 0;
+  box-shadow: 1px 3px 3px rgba(0,0,0,0.5);
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.groupSettings {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  label {
+    margin-top: 4px;
+  }
+}
+
+.stepper {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    margin: 6px;
+    background-color: rgba(0,0,0,0.5);
+    font-size: 30px;
+  }
+  
+}
+
+.justButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+
+  .toggle {
+    margin-top: 16px;
+  }
+}
+
+@media(max-width: 768px) {
+
+  aside {
+    grid-template-areas:
+      "sidebarItems"
+      "footer";
+    grid-template-rows: 1fr auto;
+    width: 50vw;// defines width for desktop when expanded
+  }
+
+  .sidebar-toogle-container {
+    display: none;
+  }
+
+  .sidebar-items {
+    height: calc(100vh - var(--header-height) - var(--footer-height));
+  }
+
+
+}
