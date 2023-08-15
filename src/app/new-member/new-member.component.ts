@@ -41,11 +41,11 @@ export class NewMemberComponent {
 
     const newMember:Member = new Member(1,username,true,'',-1,file);
     this.teamsService.createNewMember(newMember);
-    this.router.navigateByUrl('/members');
+    this.router.navigateByUrl('/app/members');
   }
 
   cancel() {
-    this.router.navigateByUrl('/members');
+    this.router.navigateByUrl('/app/members');
   }
 
   onFileSelected(event:any) {

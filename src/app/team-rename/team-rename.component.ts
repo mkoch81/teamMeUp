@@ -25,10 +25,10 @@ export class TeamRenameComponent {
       return;
     }
     this.teamsService.updateTeamName(Number(id), name);
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/app/teams');
   }
 
   cancel() {
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/app/teams');
   }
 }

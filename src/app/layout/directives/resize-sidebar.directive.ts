@@ -1,7 +1,6 @@
 import { AfterViewInit, Directive, ElementRef, HostListener, OnDestroy } from '@angular/core';
 import { Subscription, distinctUntilChanged } from 'rxjs';
 import { SidebarService } from '../services/sidebar.service';
-import { Router } from '@angular/router';
 
 @Directive({
   selector: '[appResizeSidebar]'
@@ -17,8 +16,7 @@ export class ResizeSidebarDirective implements AfterViewInit, OnDestroy {
 
   constructor(
     private elementRef: ElementRef,
-    private sidebarService: SidebarService,
-    private router: Router) {
+    private sidebarService: SidebarService) {
     this.sub = this.sidebarService.resizeSidebar$
       .pipe(distinctUntilChanged()) // resize only when changing to a different status
       .subscribe((resize: boolean) => this.onResizeSidebar(resize));
@@ -36,7 +34,7 @@ export class ResizeSidebarDirective implements AfterViewInit, OnDestroy {
 
   private onResizeSidebar(resize: boolean) {
     // TODO check values
-    this.sideBar.style.width = resize ? '150px' : '0';
+    this.sideBar.style.width = resize ? '170px' : '200px';
   }
 
   @HostListener('window:resize', ['$event'])

@@ -172,7 +172,6 @@ export class TeamsService implements OnInit {
   }
 
   updateTeamName(id: number, name: string) {
-    console.log(`update team with id = ${id} and name = ${name} `);
     let team = this.teams.find(e => e.id === id)
     if (team != undefined) {
       team!.name = name;

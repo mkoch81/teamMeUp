@@ -1,3 +1,5 @@
+@use '../../../variables.scss';
+
 :host {
   height: 100vh;
   display: grid;
@@ -16,7 +18,7 @@ app-header {
   z-index: 100;
 }
 
-app-sidebar {
+app-settings {
   grid-area: sidebar;
 }
 
@@ -25,7 +27,7 @@ main {
 
   position: relative;
   box-sizing: border-box;
-  max-height: calc(100vh - var(--header-height));
+  max-height: calc(100vh - variables.$header-height);
   padding: 2em;
   overflow: auto;
   background-color: #ECECEC;
@@ -41,12 +43,12 @@ main {
     grid-template-rows: auto [sidebar-start] 1fr [sidebar-end];
   }
 
-  app-sidebar {
+  app-settings {
     z-index: 0;
     transform: translateX(-600px);
-    // -moz-transition: transform 0.1s ease-in-out, z-index 0.1s ease-in-out;
-    // -webkit-transition: transform 0.1s ease-in-out, z-index 0.1s ease-in-out;
-    // transition: transform 0.1s ease-in-out, z-index 0.1s ease-in-out;
+    -moz-transition: transform 0.1s ease-in-out, z-index 0.1s ease-in-out;
+    -webkit-transition: transform 0.1s ease-in-out, z-index 0.1s ease-in-out;
+    transition: transform 0.1s ease-in-out, z-index 0.1s ease-in-out;
   }
 
   .sidebar-show {

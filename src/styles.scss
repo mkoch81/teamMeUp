@@ -17,7 +17,7 @@ body {
 }
 
 router-outlet + *  {
-  padding: 0 16px;
+  padding: 0;
 }
 
 .content {
@@ -107,7 +107,7 @@ router-outlet + *  {
 @media (min-width: 800px) {
   :root {
     /* ScrollbarFirefox */
-    scrollbar-color: var(--primary) grey;
+    scrollbar-color: variables.$scrollBar-color grey;
     scrollbar-width: 7px;
   }
 
@@ -120,7 +120,7 @@ router-outlet + *  {
 
   ::-webkit-scrollbar-thumb {
     border-radius: 4px;
-    background-color: var(--primary);
+    background-color: variables.$scrollBar-color;
   }
 }
 

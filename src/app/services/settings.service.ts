@@ -1,11 +1,11 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SettingsService implements OnInit {
+export class SettingsService {
 
   settings:Settings = {
     noOneIsLeftBehind:true,
@@ -19,28 +19,19 @@ export class SettingsService implements OnInit {
 
   settings2 = new BehaviorSubject<Settings>(this.settings);
   
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) { 
+    this.startUp();
+  }
 
-  ngOnInit(): void {
+  startUp() {
     this.loadSettings();
-
-    // localStorage.setItem
   }
 
   loadSettings() {
-    this.http.get<Settings>('http://localhost:3000/settings').subscribe(result =>
-      this.storeResult(result)
-    );
-  }
-
-  storeResult(result:Settings){
-    this.settings.noOneIsLeftBehind = result.noOneIsLeftBehind;
-    this.settings.oneAgainstAll = result.oneAgainstAll;
-    this.settings.groups = result.groups;
-    this.settings.numberOfTeams = result.numberOfTeams;
-    this.settings.members = result.members;
-    this.settings.numberOfMembers = result.numberOfMembers;
-    this.settings.colored = result.colored;
+    this.http.get<Settings>('http://localhost:3000/settings').subscribe({
+      next: result => this.settings = result,
+      error: err => console.log('Error loading settings: ' + err)
+    });
   }
 
   storeSettingsOnline() {

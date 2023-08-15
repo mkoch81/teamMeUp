@@ -1,49 +1,27 @@
-// ----
+@use '../../../variables.scss';
+
 aside {
   --sidebar-padding: 10px;
-  --sidebar-toggle-height: 60px;
 
-  display: grid;
-  grid-template-areas:
-    "buttonToggle"
-    "sidebarItems";
-  grid-template-rows: auto 1fr auto;
-
-  background: var(--accent);
-  width: 200px; // defines width for mobile when expanded
-  max-height: calc(100vh - var(--header-height));
-  // -moz-transition: width 0.1s ease-in-out;
-  // -webkit-transition: width 0.1s ease-in-out;
-  // transition: width 0.1s ease-in-out;
-}
-
-.sidebar-toogle-container {
-  grid-area: buttonToggle;
-
-  height: var(--sidebar-toggle-height);
   display: flex;
-  justify-content: flex-end;
-  color: white;
-  font-size: 1.2rem;
-  padding: var(--sidebar-padding);
-  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: variables.$main-bg-color;
+  width: 200px; // defines width for mobile when expanded
+  max-height: calc(100vh - variables.$header-height);
+  -moz-transition: width 0.1s ease-in-out;
+  -webkit-transition: width 0.1s ease-in-out;
+  transition: width 0.1s ease-in-out;
 }
 
 .sidebar-items {
-  grid-area: sidebarItems;
   padding: var(--sidebar-padding);
   color: white;
-  height: calc(100vh - var(--sidebar-toggle-height) - var(--header-height));
+  height: calc(100vh - variables.$header-height);
   overflow-y: auto;
 }
-
-app-footer {
-  grid-area: footer;
-}
-
-
-
-// ---
 
 h4 {
   padding-left: 16px;
@@ -119,7 +97,7 @@ img {
   }
 
   .sidebar-items {
-    height: calc(100vh - var(--header-height) - var(--footer-height));
+    height: calc(100vh - variables.$header-height);
   }
 
 
