@@ -14,11 +14,6 @@ export class TeamListElementComponent {
 
   constructor(private settingsService: SettingsService) {}
 
-  toggleSelection() {
-    if (this.member === undefined) return
-    this.member!.active = !this.member!.active;
-  }
-
   getElementColor(member:Member) {
     // color not active
     if (!this.settingsService.settings.colored) {

@@ -4,6 +4,7 @@ import { TeamsRoutingModule } from './teams.routing';
 import { TeamListComponent } from './team-list/team-list.component';
 import { TeamListElementComponent } from './team-list-element/team-list-element.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -16,7 +17,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     TeamsRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatIconModule
   ]
 })
 export class TeamsModule { }

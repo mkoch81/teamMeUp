@@ -4,6 +4,7 @@ import { MembersComponent } from './members.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MembersRoutingModule } from './members.routing';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -16,7 +17,8 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     ReactiveFormsModule,
     MembersRoutingModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class MembersModule { }

@@ -1,29 +1,44 @@
-$team-color1: #5b87b4;
-$team-color2: #484a48;
+$light-gray: #ccc;
+$medium-gray: #666;
+$dark-gray: #484a48;
+$shady-blue: #5b87b4;
+
 
 $login-bg-color: rgba(116, 200, 235, 0.5);
 
 $inactive-bg-color: #ddd;
-$inactive-color: #666666;
-$active-bg-color: rgb(147, 198, 147);
-$active-color: #666666;
+$inactive-color: $medium-gray;
 
-$main-bg-color: $team-color1;
+$active-bg-color: rgb(147, 198, 147);
+$active-color: $medium-gray;
+
+$main-bg-color: $shady-blue;
 $main-color: #aaaaaa;
+
 $scrollBar-color: white;
 $scrollBar-thumb-color: #5f76fb; 
+
 $not-selected-member-background-color: #dbe1ff;
 $not-selected-member-color: #a4a4a4;
-$inactive-member-background-color: $inactive-bg-color;
-$inactive-member-color: #a4a4a4;
 
-$light-gray: #ccc;
 $border-color: #aaa;
+
+$action-button-color: white;
+$action-button-bg-color: $shady-blue;
+
+$navigation-button-color: $dark-gray;
+$navigation-button-bg-color: $light-gray;
+
+$settings-button-color: $dark-gray;
+$settings-button-bg-color: $light-gray;
 
 $cancel-color: #ddd;
 $cancel-bg-color: rgb(207, 76, 76);
 
 $box-shadow-color: rgba(0,0,0,0.5);
+
+$border-color: rgba(0,0,0,0.5);
+$light-border-color: rgba(0,0,0,0.2);
 
 $header-height: 60px;
 $footer-height: 40px;

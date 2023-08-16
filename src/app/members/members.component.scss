@@ -1,3 +1,5 @@
+@use '../../variables.scss';
+
 .member-list {
   width: 100%;
   display: grid;
@@ -6,38 +8,67 @@
 }
 
 .active-member-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 150px;
-  height: 50px;
-  margin: 10px;
+  height: 70px;
+  margin: 6px;
   padding: 6px;
-  color: gray;
-  background-color: rgb(147, 198, 147);
+  color: variables.$active-color;
+  background-color: variables.$active-bg-color;
   border-radius: 5px;
-  border: 1px solid rgba(0,0,0,0.2);
+  border: 1px solid variables.$light-border-color;
   text-align: center;
 }
 
 .active-member-card.inactive-member-card {
-  background-color: rgba(0,0,0,0.1);
+  background-color: variables.$inactive-bg-color;
+  color: variables.$inactive-color;
 }
 
-.member-image{
-  width: 20px;
-  height: 20px;
-  border-radius: 10px;
-  object-fit: contain;
-  overflow: hidden;
-}
-
-.member-button-box {
-  padding-top: 5px;
+.member-info {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;  
-  button {
-    border: 1 solid #000;
+  align-items: center;
+
+  img {
+    margin-right: 6px;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    object-fit: cover;
+    overflow: hidden;
   }
+
+  label {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 110px;
+    text-overflow: ellipsis;
+    padding-top: 3px;
+  }
+}
+
+.member-button-box {
+  margin-top: 6px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    border: none;
+    background-color: transparent;
+    color: variables.$dark-gray;
+  }
+}
+
+.delete-member-button {
+  margin-left: 20px;
 }
 
 @media (max-width: 620px) {
@@ -68,8 +99,4 @@
   .member-list {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
-}
-
-.delete-member-button {
-  margin-left: 20px;
 }

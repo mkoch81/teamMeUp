@@ -54,3 +54,28 @@ router-outlet + *  {
   flex-direction: column;
   place-items: center;
 }
+
+.mat-action {
+  color: variables.$action-button-color !important;
+  background-color: variables.$action-button-bg-color !important;
+}
+
+.mat-navigation {
+  color: variables.$navigation-button-color !important;
+  background-color: variables.$navigation-button-bg-color !important;
+}
+
+.mat-settings {
+  color: variables.$settings-button-color !important;
+  background-color: variables.$settings-button-bg-color !important;
+}
+
+.mat-toggle-active {
+  color: variables.$settings-button-color !important;
+  background-color: variables.$settings-button-bg-color !important;
+}
+
+.mat-delete {
+  color: variables.$settings-button-color !important;
+  background-color: variables.$settings-button-bg-color !important;
+}

@@ -11,9 +11,11 @@
       <label>{{ settingsService.settings.numberOfTeams }}</label>
       <div class="stepper">
         <button mat-raised-button
-          (click)="settingsService.updateGroupCount(settingsService.settings.numberOfTeams - 1)">-</button>
+                color="settings"
+                (click)="settingsService.updateGroupCount(settingsService.settings.numberOfTeams - 1)">-</button>
         <button mat-raised-button
-          (click)="settingsService.updateGroupCount(settingsService.settings.numberOfTeams + 1)">+</button>
+                color="settings"
+                (click)="settingsService.updateGroupCount(settingsService.settings.numberOfTeams + 1)">+</button>
       </div>
     </div>
 
@@ -26,8 +28,10 @@
       <label>{{ settingsService.settings.numberOfMembers }}</label>
       <div class="stepper">
         <button mat-raised-button
+          color="settings"
           (click)="settingsService.updateMemberCount(settingsService.settings.numberOfMembers - 1)">-</button>
         <button mat-raised-button
+          color="settings"
           (click)="settingsService.updateMemberCount(settingsService.settings.numberOfMembers + 1)">+</button>
       </div>
     </div>

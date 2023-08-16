@@ -1,22 +1,23 @@
 <div class="team-list" *ngFor="let item of teamsService.teams">
-  <h3 class="team-list-h3">
-    {{ item.name }}
-    <button type="button" class="team-rename-button" (click)="renameTeam(item)">&#9998;</button></h3>
+  <div class="team-list-header">
+    <h3>{{ item.name }}</h3>
+    <button type="button" class="team-rename-button" (click)="renameTeam(item)"><mat-icon>edit</mat-icon></button>
+  </div>
   <div *ngFor="let element of item.members">
     <app-team-list-element [member]="element"></app-team-list-element>
   </div>
 </div>
 <div class="not-selected-members-list" *ngIf="checkNotSelectedMembers()">
-  <h3 class="not-selected-members-h3">Not selected members</h3>
+  <h3 class="non-active-members-header">Not selected members</h3>
   <div *ngFor="let element of teamsService.members">
     <div class="not-selected-members" *ngIf="element.team === -1 && element.active">
       <img class="member-avatar" src={{element.image}}>
-      {{element.name}}
+      <label>{{element.name}}</label>
     </div>
   </div>
 </div>
 <div class="inactive-members-list" *ngIf="checkInactiveMembers()">
-  <h3 class="inactive-members-h3">Inactive members</h3>
+  <h3 class="non-active-members-header">Inactive members</h3>
   <div *ngFor="let element of teamsService.members">
     <div class="inactive-members" *ngIf="!element.active">
       <img class="member-avatar" src={{element.image}}>

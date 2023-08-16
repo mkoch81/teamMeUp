@@ -24,7 +24,7 @@ aside {
 h4 {
   padding-top: 10px;
   text-align: center;
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: subpixel-antialiased;
 }
 
 img {
@@ -58,11 +58,12 @@ img {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-
+  -webkit-font-smoothing: subpixel-antialiased;
   button {
     margin: 6px;
     background-color: rgba(0,0,0,0.5);
     font-size: 30px;
+    -webkit-font-smoothing: subpixel-antialiased;
   }
   
 }

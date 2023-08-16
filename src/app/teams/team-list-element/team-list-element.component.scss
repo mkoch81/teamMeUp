@@ -1,11 +1,19 @@
+@use '../../../variables.scss';
 
 .team-element-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 26px;
   width: 100%;
-  color: rgba(0,0,0,0.6);
-  border-bottom: 1px solid #ccc;
+  color: variables.$dark-gray;
+  border-bottom: 1px solid variables.$light-gray;
 }
 
 .member-avatar {
+  padding-top: -1px;
+  margin-right: 10px;
   width: 20px;
   height: 20px;
   object-fit: cover;
