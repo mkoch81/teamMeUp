@@ -4,7 +4,6 @@
 /* You can add global styles to this file, and also import other style files */
 * {
   font-family: 'Roboto', Arial, sans-serif;
-  color: #616161;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -22,7 +21,7 @@ router-outlet + *  {
 
 
 
-@media (min-width: 800px) {
+@media (min-width: 768px) {
   :root {
     /* ScrollbarFirefox */
     scrollbar-color: variables.$scrollBar-thumb-color variables.$scrollBar-color;
@@ -47,7 +46,7 @@ router-outlet + *  {
   background-color: white;
   border: 1px solid rgba(0,0,0,0.2);
   border-radius: 5px;
-  box-shadow: -10px -10px 5px rgba(0,0,0,0.2);
+  box-shadow: -10px -10px 5px variables.$box-shadow-color;
 }
 
 .cdk-overlay-pane {

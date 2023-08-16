@@ -1,14 +1,29 @@
 $team-color1: #5b87b4;
 $team-color2: #484a48;
 
+$login-bg-color: rgba(116, 200, 235, 0.5);
+
+$inactive-bg-color: #ddd;
+$inactive-color: #666666;
+$active-bg-color: rgb(147, 198, 147);
+$active-color: #666666;
+
 $main-bg-color: $team-color1;
 $main-color: #aaaaaa;
 $scrollBar-color: white;
 $scrollBar-thumb-color: #5f76fb; 
 $not-selected-member-background-color: #dbe1ff;
 $not-selected-member-color: #a4a4a4;
-$inactive-member-background-color: #ddd;
+$inactive-member-background-color: $inactive-bg-color;
 $inactive-member-color: #a4a4a4;
+
+$light-gray: #ccc;
+$border-color: #aaa;
+
+$cancel-color: #ddd;
+$cancel-bg-color: rgb(207, 76, 76);
+
+$box-shadow-color: rgba(0,0,0,0.5);
 
 $header-height: 60px;
 $footer-height: 40px;

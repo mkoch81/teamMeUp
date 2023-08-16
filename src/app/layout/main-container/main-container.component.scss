@@ -1,7 +1,7 @@
 @use '../../../variables.scss';
 
 .grid-container {
-  height: 100vh;
+  height: 100%;
   display: grid;
   grid-template-areas:
     "header"

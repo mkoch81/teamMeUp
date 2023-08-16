@@ -1,3 +1,5 @@
+@use '../../variables.scss';
+
 .dialog-content {
   margin: 0;
   padding: 10px;
@@ -53,5 +55,7 @@
   margin-top: 20px;
   :first-child {
     margin-right: 10px;
+    background-color: variables.$cancel-bg-color;
+    color: variables.$cancel-color;
   }
 }
