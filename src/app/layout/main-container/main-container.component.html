@@ -1,9 +1,11 @@
-<app-header (toggleSidebar)="showSidebar = !showSidebar"></app-header>
+<div class="grid-container" [class.sidebar-open]="showSidebar">
+  <app-header (toggleSidebar)="showSidebar = !showSidebar"></app-header>
 
-<app-settings [class.sidebar-show]="showSidebar" *ngIf="this.router.url.includes('app/teams')"></app-settings>
+  <app-settings [class.sidebar-show]="showSidebar" *ngIf="this.router.url.includes('app/teams') && showSidebar"></app-settings>
 
-<main>
-  <router-outlet #outlet="outlet"></router-outlet>
-</main>
+  <main>
+    <router-outlet #outlet="outlet"></router-outlet>
+  </main>
 
-<!-- <app-backdrop [show]="showSidebar" (click)="showSidebar = !showSidebar"></app-backdrop> -->
+  <!-- <app-backdrop [show]="showSidebar" (click)="showSidebar = !showSidebar"></app-backdrop> -->
+</div>

@@ -1,6 +1,7 @@
 import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
 import { CdkPortal } from '@angular/cdk/portal';
 import { AfterViewInit, Component, EventEmitter, Output, ViewChild, ViewEncapsulation } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

@@ -1,15 +1,19 @@
 <app-dialog (closeDialog)="cancel()">
   <ng-container gen-dialog-header>
-    <h3 class="rename-dialog-header">Enter new team name:</h3>
+    Change team name
   </ng-container>
   <ng-container gen-dialog-content>
     <div class="rename-dialog-content">
-      <form [formGroup]="renameTeamForm" (ngSubmit)="onSubmit()" style="margin-top: 16px;">
-        <label for="name">Name: </label>
-        <input id="name" type="text" formControlName="name" required autofocus>
+      <form [formGroup]="renameTeamForm" (ngSubmit)="onSubmit()">
+        <div class="rename-input">
+          <label for="name">Name: </label>
+          <input id="name" type="text" formControlName="name" required autofocus>
+        </div>
 
-        <p>Complete the form to enable button.</p>
-        <button type="submit" [disabled]="!renameTeamForm.valid">Submit</button>
+        <div class="rename-submit">
+          <button mat-raised-button color="warn" type="button" (click)="cancel()">Cancel</button>
+          <button mat-raised-button color="" title="Complete the form to enable button." type="submit" [disabled]="!renameTeamForm.valid">Submit</button>
+        </div>
       </form>
     </div>
   </ng-container>

@@ -1,10 +1,10 @@
 <app-dialog (closeDialog)="cancel()">
     <ng-container gen-dialog-header>
-      <h3 class="dialog-header">Enter new member name:</h3>
+      Create new member
     </ng-container>
     <ng-container gen-dialog-content>
       <div class="dialog-content">
-        <form [formGroup]="newMemberForm" (ngSubmit)="onSubmit()" style="margin-top: 16px;">
+        <form [formGroup]="newMemberForm" (ngSubmit)="onSubmit()">
           <label for="name">Name: </label>
           <input id="name" type="text" formControlName="name" required autofocus>
           
@@ -13,23 +13,19 @@
           <div class="file-upload">
             {{fileName || "No file selected"}}
 
-            <button type="button" class="upload-button" (click)="fileUpload.click()">
+            <button mat-mini-fab color="white" type="button" class="upload-button" (click)="fileUpload.click()">
               <img src="assets/img/icons/upload_icon.png">
             </button>
           </div>
           <div class="upload-preview">
-            <label>Preview: </label>
+            Preview:
             <img class="preview-image" src="{{base64PlainData}}">
           </div>
-          <p>Complete the form to enable the button.</p>
-          <button type="submit" [disabled]="!newMemberForm.valid">Submit</button>
+          <div class="new-member-submit-button">
+            <button mat-raised-button color="warn" type="button" (click)="cancel()">Cancel</button>
+            <button mat-raised-button type="submit" [disabled]="!newMemberForm.valid" title="Complete the form to enable the button.">Submit</button>
+          </div>
         </form>
-
-        <hr>
-
-        <!-- <p>Form Value: {{ newMemberForm.value | json }}</p> -->
-
-        <p>Form Status: {{ newMemberForm.status }}</p>
       </div>
     </ng-container>
 </app-dialog>

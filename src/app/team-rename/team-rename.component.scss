@@ -1,13 +1,28 @@
-.rename-dialog-header {
-  height: 50px;
-  width: 100%;
-  background-color: white;
-  margin: 0;
-  padding: 10px;
-}
 .rename-dialog-content {
   margin: 0;
   padding: 10px;
   width: 100%;
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.rename-input {
+  margin-bottom: 10px;
+  input {
+    margin-left: 10px;
+  }
+}
+
+.rename-submit {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  :first-child {
+    margin-right: 10px;
+  }
 }

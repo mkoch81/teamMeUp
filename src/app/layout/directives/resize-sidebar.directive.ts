@@ -34,7 +34,7 @@ export class ResizeSidebarDirective implements AfterViewInit, OnDestroy {
 
   private onResizeSidebar(resize: boolean) {
     // TODO check values
-    this.sideBar.style.width = resize ? '170px' : '200px';
+    this.sideBar.style.width = resize ? '200px' : '0px';
   }
 
   @HostListener('window:resize', ['$event'])

@@ -15,6 +15,8 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { DialogComponent } from './dialog/dialog.component';
 import { TeamRenameComponent } from './team-rename/team-rename.component';
 import { NewMemberComponent } from './new-member/new-member.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { NewMemberComponent } from './new-member/new-member.component';
     LayoutModule,
     BrowserAnimationsModule,
     PortalModule,
-    OverlayModule
+    OverlayModule,
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

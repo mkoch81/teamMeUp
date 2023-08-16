@@ -32,7 +32,7 @@ const routes: Routes = [
       },
       { 
         path: 'rename-team/:id', 
-        component: TeamRenameComponent 
+        component: TeamRenameComponent
       },
       {
         path: 'new-member',

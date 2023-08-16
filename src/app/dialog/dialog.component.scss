@@ -1,7 +1,18 @@
+mat-card-header {
+  display: flex;
+  justify-content: center;
+}
+
 .dialog-content {
   width: 100%;
   display: flex;
   flex-direction: column;
   margin: 0;
   padding: 0;
+}
+
+@media(max-width: 768px) {
+  .dialog-content {
+    width: 300px;
+  }
 }

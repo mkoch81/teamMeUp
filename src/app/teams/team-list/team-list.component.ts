@@ -26,6 +26,7 @@ export class TeamListComponent implements OnInit {
   }
 
   renameTeam(team: Team) {
-    this.router.navigateByUrl(`app/rename-team/${team.id}`);
+    console.log('selected team with name = ' + team.name);
+    this.router.navigateByUrl(`app/rename-team/${team.id}`, {state:{name:team.name}});
   }
 }

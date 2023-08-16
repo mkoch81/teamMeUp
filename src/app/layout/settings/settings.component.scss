@@ -9,7 +9,7 @@ aside {
   align-items: center;
 
   background: variables.$main-bg-color;
-  width: 200px; // defines width for mobile when expanded
+  width: 170px; // defines width for desktop when expanded
   max-height: calc(100vh - variables.$header-height);
   -moz-transition: width 0.1s ease-in-out;
   -webkit-transition: width 0.1s ease-in-out;
@@ -17,15 +17,12 @@ aside {
 }
 
 .sidebar-items {
-  padding: var(--sidebar-padding);
   color: white;
   height: calc(100vh - variables.$header-height);
-  overflow-y: auto;
 }
 
 h4 {
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-top: 10px;
   text-align: center;
   -webkit-font-smoothing: antialiased;
 }
@@ -85,11 +82,7 @@ img {
 @media(max-width: 768px) {
 
   aside {
-    grid-template-areas:
-      "sidebarItems"
-      "footer";
-    grid-template-rows: 1fr auto;
-    width: 50vw;// defines width for desktop when expanded
+    width: 170px;// defines width for mobile when expanded
   }
 
   .sidebar-toogle-container {
@@ -100,5 +93,8 @@ img {
     height: calc(100vh - variables.$header-height);
   }
 
-
+  .sidebar-show {
+    transform: translateX(0);
+    z-index: 200;
+  }
 }

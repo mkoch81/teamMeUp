@@ -1,7 +1,16 @@
 <ng-template cdkPortal>
   <div class="dialog-content">
-
-    <ng-content class="gen-dialog-header" select=[gen-dialog-header]></ng-content>
-    <ng-content class="gen-dialog-content" select=[gen-dialog-content]></ng-content>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>
+          <ng-content class="gen-dialog-header" select=[gen-dialog-header]>
+          </ng-content>
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <ng-content class="gen-dialog-content" select=[gen-dialog-content]>
+        </ng-content>
+      </mat-card-content>
+    </mat-card>
   </div>
 </ng-template>

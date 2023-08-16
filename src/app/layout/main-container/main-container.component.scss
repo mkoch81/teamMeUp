@@ -1,13 +1,13 @@
 @use '../../../variables.scss';
 
-:host {
+.grid-container {
   height: 100vh;
   display: grid;
   grid-template-areas:
-    "header header"
-    "sidebar container";
-  grid-template-columns: auto 1fr;
-  grid-template-rows: auto 1fr;
+    "header"
+    "container";
+  grid-template-columns: 1fr;
+  grid-template-rows: variables.$header-height 1fr;
 }
 
 app-header {
@@ -20,6 +20,7 @@ app-header {
 
 app-settings {
   grid-area: sidebar;
+  overflow-y: auto;
 }
 
 main {
@@ -28,35 +29,27 @@ main {
   position: relative;
   box-sizing: border-box;
   max-height: calc(100vh - variables.$header-height);
-  padding: 2em;
+  padding: 10px;
   overflow: auto;
   background-color: #ECECEC;
 }
 
+.sidebar-open.grid-container {
+  grid-template-areas:
+    "header header"
+    "sidebar container";
+  grid-template-columns: [sidebar-start] auto [sidebar-end] 1fr;
+  grid-template-rows: variables.$header-height 1fr;
+}
+
+
 @media(max-width: 768px) {
 
-  :host {
+  .grid-container {
     grid-template-areas:
-      "header header"
-      "container container";
-    grid-template-columns: [sidebar-start] auto [sidebar-end] 1fr;
-    grid-template-rows: auto [sidebar-start] 1fr [sidebar-end];
-  }
-
-  app-settings {
-    z-index: 0;
-    transform: translateX(-600px);
-    -moz-transition: transform 0.1s ease-in-out, z-index 0.1s ease-in-out;
-    -webkit-transition: transform 0.1s ease-in-out, z-index 0.1s ease-in-out;
-    transition: transform 0.1s ease-in-out, z-index 0.1s ease-in-out;
-  }
-
-  .sidebar-show {
-    transform: translateX(0);
-    z-index: 200;
-  }
-
-  main {
-    padding: 1em;
+      "header"
+      "container";
+    grid-template-columns: 1fr;
+    grid-template-rows: variables.$header-height 1fr;
   }
 }
