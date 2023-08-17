@@ -79,3 +79,11 @@ router-outlet + *  {
   color: variables.$settings-button-color !important;
   background-color: variables.$settings-button-bg-color !important;
 }
+
+.mat-icon-default {
+  color: variables.$dark-gray;
+}
+
+.mat-icon-warn {
+  color: variables.$warning;
+}

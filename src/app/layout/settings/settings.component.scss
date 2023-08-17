@@ -10,10 +10,11 @@ aside {
 
   background: variables.$main-bg-color;
   width: 170px; // defines width for desktop when expanded
-  // max-height: calc(100vh - variables.$header-height);
   -moz-transition: width 0.1s ease-in-out;
   -webkit-transition: width 0.1s ease-in-out;
   transition: width 0.1s ease-in-out;
+
+  overflow-y: auto;
 }
 
 .sidebar-items {
@@ -73,7 +74,6 @@ img {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 
   .toggle {
     margin-top: 16px;

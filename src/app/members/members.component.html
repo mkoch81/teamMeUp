@@ -8,9 +8,9 @@
             </div>
             <div class="member-button-box">
                 <button type="button"
-                    (click)="toggleActive(item)"><mat-icon>{{ item.active ? 'person' : 'person_off'}}</mat-icon></button>
+                    (click)="toggleActive(item)"><mat-icon color="{{ item.active ? 'icon-default' : 'icon-warn'}}">{{ item.active ? 'person' : 'person_off'}}</mat-icon></button>
                 <button class="delete-member-button" type="button"
-                    (click)="deleteMember(item)"><mat-icon>delete</mat-icon></button>
+                    (click)="deleteMember(item)"><mat-icon color="icon-default">delete</mat-icon></button>
             </div>
         </div>
 

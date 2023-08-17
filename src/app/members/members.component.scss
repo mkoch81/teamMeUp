@@ -5,6 +5,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
+  justify-items: center;
 }
 
 .active-member-card {
@@ -63,7 +64,6 @@
   button {
     border: none;
     background-color: transparent;
-    color: variables.$dark-gray;
   }
 }
 
